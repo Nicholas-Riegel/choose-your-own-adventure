@@ -1,5 +1,46 @@
 const prompt = require("prompt-sync")()
 
+const crew = [
+	{
+		name: "John",
+		profession: 'navigator',
+		age: 40
+	 }, 
+	{
+		name: "Jane",
+		profession: 'cook',
+		age: 30
+	 }, 
+	{
+		name: "Mike",
+		profession: 'navigator',
+		age: 20
+	 }, 
+	{
+		name: "Alice",
+		profession: 'engineer',
+		age: 24
+	 } 
+]
+
+function partialCrew(crew){
+	for(let i = 0; i < crew.length; i++){
+		if (crew[i].age < 40 &&  (crew[i].profession === 'navigator' || crew[i].profession === 'engineer')) {
+			console.log(`You saved ${crew[i].name}`)
+		} else if (crew[i].profession === 'cook'){
+			console.log(`${crew[i].name} is a cook.`)
+		} else {
+			console.log(`${crew[i].name} is too old and had to stay behind`)
+		}
+	}
+}
+
+function wholeCrew(crew){
+	for(let i = 0; i < crew.length; i++){
+			console.log(`You saved ${crew[i].name}`)
+	}
+}
+
 // begin game
 const username = prompt("Welcome to this Choose Your Own Adventure game. Let's begin. Please type your name (or type 'exit' to exit the game): ")
 
@@ -32,41 +73,12 @@ if (signal === "answer") {
 		if(decision1 === "flee") {
             console.log(`Oh no! the creature caught up to you and ate you. Game Over...`);
         } else {
-            console.log(`Good for you for deciding to fight! You used the unbeatable blaster5000 and vanquished the creature. The threat was elimniated and you saved the crew. You Win!`);
+            console.log(`Good for you for deciding to fight! You used the unbeatable blaster5000 and vanquished the creature. The threat was elimniated and you saved the whole crew`);
+						wholeCrew(crew)
         }
 	} else {
-		console.log("You chose to go down. You follow a corridor until you find the crew. However, you can only take back people under 40 and who are not cooks.")
-		const crew = [
-			{
-				name: "John",
-				profession: 'navigator',
-				age: 40
-	 		}, 
-			{
-				name: "Jane",
-				profession: 'cook',
-				age: 30
-	 		}, 
-			{
-				name: "Mike",
-				profession: 'navigator',
-				age: 20
-	 		}, 
-			{
-				name: "Alice",
-				profession: 'engineer',
-				age: 24
-	 		} 
-		]
-		for(let i = 0; i < crew.length; i++){
-			if (crew[i].age < 40 &&  (crew[i].profession === 'navigator' || crew[i].profession === 'engineer')) {
-				console.log(`You saved ${crew[i].name}`)
-			} else if (crew[i].profession === 'cook'){
-				console.log(`${crew[i].name} is a cook.`)
-			} else {
-				console.log(`${crew[i].name} is too old and had to stay behind`)
-			}
-		}
+		console.log("You chose to go down. You follow a corridor until you find the crew. However, you can only take back people under 40 and who are not cooks.")		
+		savedCrew(crew)
 	}
 } else {
     console.log(`Space Warrior ${username}, you are not a true galactic hero! Game Over...`);
