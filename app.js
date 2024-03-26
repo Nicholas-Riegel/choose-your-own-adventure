@@ -57,19 +57,25 @@ while (signal !== 'answer' && signal !== 'ignore'){
 if (signal === "answer") {
 	
 	console.log(`Awesome! Now you're on your way to the distressed space crew and land on the spaceship. You dock into the ship and open the hatch, only to find you must choose between two passages - up or down`);
+	
 	let direction = prompt(`Please type either 'up' or 'down' (or type 'exit' to exit the game): `);
+	
 	while (direction !== 'up' && direction !== 'down'){
 		if(direction === 'exit') return;
 		direction = prompt("Please type either 'up' or 'down' (or type 'exit' to exit the game): ");
 	}	
+	
 	if (direction === `up`) {
+		
 		console.log(`Great! You reach the top of the ship and hear a loud "screech!" You turn the lights on and see an alien looking at you funny!`);
+		
 		let decision1 = prompt(`Do you want to face this ferocious creature or run for your life? Please type either 'fight' or 'flee' (or type 'exit' to exit the game): `);
         
 		while (decision1 !== 'fight' && decision1 !== 'flee'){
 			if(decision1 === 'exit') return;
 			decision1 = prompt("Please type either 'fight' or 'flee' (or type 'exit' to exit the game): ");
 		}
+		
 		if(decision1 === "flee") {
             console.log(`Oh no! the creature caught up to you and ate you. Game Over...`);
         } else {
