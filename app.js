@@ -1,35 +1,41 @@
 const prompt = require("prompt-sync")()
-const username = prompt("What is your name? ")
 
 // begin game
-console.log(`Welcome, ${username}! You are in the year 3035 and you are in a spaceship on a reconnaissance mission after reveiving a distress signal You have two choices, what will you do?`);
+const username = prompt("Welcome to this Choose Your Own Adventure game. Let's begin. Please type your name (or type 'exit' to exit the game): ")
 
-let signal = prompt(`What is yor response? answer or ignore `);
+if (username === 'exit') return;
+
+console.log(`Welcome, ${username}! The year is 3035. You are on a spaceship on a reconnaissance mission and you receive a distress signal.`)
+
+let signal = prompt(`Would you like to respond to the signal or ignore it? Please type either 'answer' or 'ignore' (or type 'exit' to exit the game): `);
+
 while (signal !== 'answer' && signal !== 'ignore'){
-	signal = prompt("Please type either 'answer' or 'ignore' ");
+	if(signal === 'exit') return;
+	signal = prompt("Please type either 'answer' or 'ignore' (or type 'exit' to exit the game): ");
 }
 if (signal === "answer") {
 	
 	console.log(`Awesome! Now you're on your way to the distressed space crew and land on the spaceship. You dock into the ship and open the hatch, only to find you must choose between two passages - up or down`);
-	let direction = prompt(`Where will you go? up or down? `);
+	let direction = prompt(`Please type either 'up' or 'down' (or type 'exit' to exit the game): `);
 	while (direction !== 'up' && direction !== 'down'){
-		direction = prompt("Please type either 'up' or 'down' ");
+		if(direction === 'exit') return;
+		direction = prompt("Please type either 'up' or 'down' (or type 'exit' to exit the game): ");
 	}	
 	if (direction === `up`) {
 		console.log(`Great! You reach the top of the ship and hear a loud "screech!" You turn the lights on and see an alien looking at you funny!`);
-		let decision1 = prompt(`Do you want to face this ferocious creature or run for your life? fight or flee? `);
+		let decision1 = prompt(`Do you want to face this ferocious creature or run for your life? Please type either 'fight' or 'flee' (or type 'exit' to exit the game): `);
         
 		while (decision1 !== 'fight' && decision1 !== 'flee'){
-			decision1 = prompt("Please type either 'fight' or 'flee' ");
+			if(decision1 === 'exit') return;
+			decision1 = prompt("Please type either 'fight' or 'flee' (or type 'exit' to exit the game): ");
 		}
 		if(decision1 === "flee") {
-            console.log(`Oh no! the creature caught up to you and you died. Game Over...`);
+            console.log(`Oh no! the creature caught up to you and ate you. Game Over...`);
         } else {
-            console.log(`Good for you for deciding to fight! You used the unbeatable blaster5000 and vanquished the alien life force. The threat was elimniated and you saved the crew. You Win!`);
+            console.log(`Good for you for deciding to fight! You used the unbeatable blaster5000 and vanquished the creature. The threat was elimniated and you saved the crew. You Win!`);
         }
-
 	} else {
-		console.log("You chose to go down. You follow a corridor until you find the crew. However, you can only take back people under 40.")
+		console.log("You chose to go down. You follow a corridor until you find the crew. However, you can only take back people under 40 and who are not cooks.")
 		const crew = [
 			{
 				name: "John",
@@ -56,7 +62,7 @@ if (signal === "answer") {
 			if (crew[i].age < 40 &&  (crew[i].profession === 'navigator' || crew[i].profession === 'engineer')) {
 				console.log(`You saved ${crew[i].name}`)
 			} else if (crew[i].profession === 'cook'){
-				console.log(`${crew[i].name} is of the wrong profession`)
+				console.log(`${crew[i].name} is a cook.`)
 			} else {
 				console.log(`${crew[i].name} is too old and had to stay behind`)
 			}
