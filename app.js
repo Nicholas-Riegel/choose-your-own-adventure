@@ -78,7 +78,7 @@ if (signal === "answer") {
         }
 	} else {
 		console.log("You chose to go down. You follow a corridor until you find the crew. However, you can only take back people under 40 and who are not cooks.")		
-		savedCrew(crew)
+		partialCrew(crew)
 	}
 } else {
     console.log(`Space Warrior ${username}, you are not a true galactic hero! Game Over...`);
